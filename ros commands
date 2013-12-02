@@ -1,0 +1,6 @@
+roslaunch baxter_control baxter_visualization.launch
+rosrun carrt_demo carrt_kinect_tf
+roslaunch openni_launch openni.launch rgb_frame_id:=kinect_head depth_frame_id:=kinect_head publish_tf:=false
+roslaunch baxter_moveit_config baxter_moveit.launch
+roslaunch carrt_demo carrt_octomap.launch
+

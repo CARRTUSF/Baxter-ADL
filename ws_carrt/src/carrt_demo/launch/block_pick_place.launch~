@@ -1,0 +1,14 @@
+<launch>
+
+  <arg name="debug" default="false" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
+
+  <!-- Launch pick and place -->
+  <node name="carrt_demo" launch-prefix="$(arg launch_prefix)" pkg="carrt_demo" 
+	type="carrt_demo" output="screen">
+    <rosparam command="load" file="$(find baxter_moveit_config)/config/kinematics.yaml"/>
+    <remap from="/joint_states" to="/robot/joint_states" />
+  </node>
+
+</launch>
