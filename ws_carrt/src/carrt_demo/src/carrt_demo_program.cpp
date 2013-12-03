@@ -27,6 +27,7 @@ public:
 
         // Create MoveGroup for the Right_Arm
         move_group_.reset(new move_group_interface::MoveGroup("right_arm"));
+        move_group_->setPlanningTime(30.0);
 
         // Let Everything Load
         ros::Duration(1.0).sleep();
@@ -36,8 +37,7 @@ public:
             return;
 
         geometry_msgs::PoseStamped ee_pose;
-
-        while(ros::ok()){
+        while(ros::ok()) {
             ee_pose = move_group_->getCurrentPose("right_gripper_l_finger");
             ROS_INFO_STREAM_NAMED("carrt_demo", "Postion (X, Y, Z): (" << ee_pose.pose.position.x << ", " << ee_pose.pose.position.y << ", " << ee_pose.pose.position.z << ")");
             ros::Duration(4.0).sleep();
@@ -52,6 +52,8 @@ public:
     }
 
     bool StartRoutine() {
+        while(ros::ok()) {
+        }
         //Wait for User Input
         //Tuck Baxter
         //Navigate PowerBot to destination

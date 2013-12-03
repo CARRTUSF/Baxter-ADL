@@ -11,21 +11,17 @@ int main(int argc, char** argv) {
     tf::TransformBroadcaster kinect_br_;
     tf::Transform kinect_tf_;
 
-    //Set the broadcaster delay
-    ros::Rate rate(5.0);
-
-    //Loop while the node is still valid
-    while (node.ok()) {
+    //Execute Once, the Base does not change position
+    if(node.ok()) {
         tf::Matrix3x3 kinect_matrix;
         //Rotate to 27 Degrees Down
         kinect_matrix.setValue( 0 , -0.3987 ,  0.9171 ,
                                -1 ,  0      ,  0      ,
                                 0 , -0.9171 , -0.3987 );
-        kinect_tf_.setOrigin( tf::Vector3(0.2, 0.0, 0.25) );
+        kinect_tf_.setOrigin(tf::Vector3(0.2, 0.0, 0.25));
         //kinect_tf_.setRotation( tf::createQuaternionFromRPY(0.0, 2.04203522, -1.57079633) );
         kinect_tf_.setBasis(kinect_matrix); //Set Rotation Matrix
         kinect_br_.sendTransform(tf::StampedTransform(kinect_tf_, ros::Time::now(), "base", "kinect_head"));
-        rate.sleep();
     }
 
     return 0;

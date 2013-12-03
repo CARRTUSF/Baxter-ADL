@@ -31,11 +31,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add directory="/opt/ros/hydro/include" />
-			<Add directory="~/ros/ws_baxter/devel/include" />
-			<Add directory="~/ros/ws_baxter/src/baxter_cpp/baxter_control/include/" />
+			<Add directory="/home/andoni/ros/ws_baxter/devel/include" />
+			<Add directory="/home/andoni/ros/ws_baxter/src/baxter_cpp/baxter_control/include/" />
 		</Compiler>
 		<Unit filename="carrt_demo/src/carrt_demo_program.cpp" />
 		<Unit filename="carrt_demo/src/carrt_kinect_tf.cpp" />
+		<Unit filename="carrt_moveit_config/config/rgbd-octomap.yaml" />
 		<Extensions>
 			<code_completion />
 			<debugger />
